@@ -14,7 +14,14 @@ module Legato
           base_uri + path
         end
 
-        json = user.access_token.get(base_uri + path).body
+        begin
+          json = user.access_token.get(base_uri + path).body
+        rescue
+          # service_account (oauth 2)
+          headers = { headers: { "Authorization" => "Bearer #{user.access_token.options[:access_token]}" } }
+          json = user.access_token.request(:get, base_uri + path, header).body
+        end
+        
         MultiJson.decode(json)['items'].map {|item| new(item, user)}
       end
     end

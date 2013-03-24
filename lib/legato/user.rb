@@ -10,14 +10,20 @@ module Legato
     URL = "https://www.googleapis.com/analytics/v3/data/ga"
 
     def request(query)
-      raw_response = if api_key
-        # oauth 1 + api key
-        query_string = URI.escape(query.to_query_string, '<>') # may need to add !~@
+      if defined? access_token.refresh_token
+        raw_response = if api_key
+          # oauth 1 + api key
+          query_string = URI.escape(query.to_query_string, '<>') # may need to add !~@
 
-        access_token.get(URL + query_string + "&key=#{api_key}")
+          access_token.get(URL + query_string + "&key=#{api_key}")
+        else
+          # oauth 2
+          access_token.get(URL, params: query.to_params)
+        end
       else
-        # oauth 2
-        access_token.get(URL, :params => query.to_params)
+        # service_account (oauth 2)
+        query.profile.user.access_token.connection.headers["Authorization"] = "Bearer #{access_token.options[:access_token]}"
+        raw_response = access_token.request(:get, URL, params: query.to_params )
       end
 
       Response.new(raw_response, query.instance_klass)
