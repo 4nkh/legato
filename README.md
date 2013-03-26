@@ -3,7 +3,7 @@
 Google Api Service Account for backend authentication was added to
 get the oauth2 hand shake without providing username and password
 
-add correction to the wiki (FILTER EXAMPLE)
+add correction to the wiki (FILTER EXAMPLES)
 
 ## [Check out the Wiki!](https://github.com/4nkh/legato/wiki) ##
 
