@@ -19,7 +19,7 @@ module Legato
         rescue
           # service_account (oauth 2)
           headers = { headers: { "Authorization" => "Bearer #{user.access_token.options[:access_token]}" } }
-          json = user.access_token.request(:get, base_uri + path, header).body
+          json = user.access_token.request(:get, base_uri + path, headers).body
         end
         
         MultiJson.decode(json)['items'].map {|item| new(item, user)}
