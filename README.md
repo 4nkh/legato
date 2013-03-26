@@ -1,10 +1,13 @@
 # Legato: Google Analytics Model/Mapper #
 
+Google Api Service Account for backend authentication was added to
+get the oauth2 hand shake without providing username and password
+
 ## [Check out the Wiki!](https://github.com/tpitale/legato/wiki) ##
 
 ## Google Analytics Management ##
 
-1. Get an OAuth2 Access Token from Google, Read about [OAuth2](https://github.com/tpitale/legato/wiki/OAuth2-and-Google)
+1. Get an OAuth2 Access Token from Google, Read about [OAuth2](https://github.com/4nkh/Auth2-and-Google)
 
         access_token = OAuth2 Access Token # from Google
 
