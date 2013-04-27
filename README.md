@@ -9,7 +9,7 @@ add correction to the wiki (FILTER EXAMPLES)
 
 ## Google Analytics Management ##
 
-1. Get an OAuth2 Access Token from Google, Read about [OAuth2](https://github.com/4nkh.legato/wiki/OAuth2-and-Google)
+1. Get an OAuth2 Access Token from Google, Read about [OAuth2](https://github.com/4nkh/legato/wiki/OAuth2-and-Google)
 
         access_token = OAuth2 Access Token # from Google
 
